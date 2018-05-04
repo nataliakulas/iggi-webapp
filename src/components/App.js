@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import Navigation from '../components/Navigation';
-
 import ProfilePage from '../pages/profile';
 
 class App extends Component {

@@ -1,13 +1,11 @@
 import React from 'react';
+import {Grid, Row, Col, Panel} from 'react-bootstrap'
 
 import {db} from '../firebase/index';
 
 const ProfilePage = () => {
   return (
-    <div>
-      <h1>Profile</h1>
-      <Profile/>
-    </div>
+    <Profile/>
   )
 };
 
@@ -21,7 +19,7 @@ class Profile extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     db.getProducts().then(snap => {
         const products = [];
 
@@ -42,20 +40,26 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.hasProducts ?
-          <div>
-            {this.state.products.map(product => {
-              return (
-                <ul>
-                  <li>{product.name}</li>
-                  <li>{product.gi}</li>
-                </ul>
-              )
-            })
-            }
-          </div>
-          : null}
+      <div className="page profile">
+        <Grid>
+          <Row>
+            <Col lg={8} lgOffset={2}>
+              {this.state.hasProducts ?
+                <Panel>
+                  {this.state.products.map(product => {
+                    return (
+                      <ul>
+                        <li>{product.name}</li>
+                        <li>- {product.gi}</li>
+                      </ul>
+                    )
+                  })
+                  }
+                </Panel>
+                : null}
+            </Col>
+          </Row>
+        </Grid>
       </div>
     )
   }
