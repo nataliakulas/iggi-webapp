@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import ProfilePage from '../pages/profile';
+import ProfilePage from '../pages/profile/create';
 
 class App extends Component {
   render() {
