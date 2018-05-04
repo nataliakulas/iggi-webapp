@@ -1,21 +1,50 @@
 import React, {Component} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Navigation from './Navigation';
+import LandingPage from './Landing';
+import SignUpPage from './SignUp';
+import SignInPage from './SignIn';
+import PasswordForgetPage from './PasswordForget';
+import HomePage from './Home';
+import AccountPage from './Account';
 
-import Navigation from '../components/Navigation';
+import * as routes from '../constants/routes';
+import withAuthentication from './withAuthentication';
 
-class App extends Component {
-    render() {
-        return (
-            <div className="App">
-                <Navigation color={"czarny"} >To jest nawigacja</Navigation>
-                <header className="App-header">
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
-            </div>
-        );
-    }
-}
 
-export default App;
+
+const App = () => 
+     <Router>
+        <div>
+         <Navigation/>
+        <hr/>
+        <Route exact path={routes.LANDING}
+         component={() => <LandingPage/>}
+        />
+        <Route
+            exact path={routes.SIGN_UP}
+            component={() => <SignUpPage/>}
+        />
+        <Route
+            exact path={routes.SIGN_IN}
+            component={() => <SignInPage/>}
+        />
+        <Route
+            exact path={routes.PASSWORD_FORGET}
+            component={() => <PasswordForgetPage/>}
+        />
+        <Route
+            exact path={routes.HOME}
+            component={() => <HomePage/>}
+        />
+        <Route
+            exact path={routes.ACCOUNT}
+            component={() => <AccountPage/>}
+        />
+        
+    </div>
+            </Router>
+
+
+
+export default withAuthentication(App);
