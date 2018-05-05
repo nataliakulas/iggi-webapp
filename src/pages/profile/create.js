@@ -2,14 +2,62 @@ import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap'
 
 import {db} from '../../firebase/index';
+import Diet from '../../constants/diet';
+
+import {propByKey} from '../../helpers';
+
+import Checkbox from '../../components/Checkbox';
 
 const ProfilePage = () => {
   return (
-    <CreateProfile/>
+    <Step1/>
+    // <Step2/>
   )
 };
 
-class CreateProfile extends React.Component {
+
+class Step1 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      all: false,
+      lactovegetarian: false,
+      ovovegetarian: false,
+      ovolactovegetarian: false,
+      pescovegetarian: false,
+      pollovegetarian: false,
+      semivegetarian: false,
+      vegetarian: false,
+      glutenfree: false
+    }
+  }
+
+  render() {
+    console.log(this.state);
+    return (
+      <div className="page step-1">
+        <Grid>
+          <Row>
+            <Col lg={6} lgOffset={3}>
+              <div className="card">
+                {Diet.map((diet, i = 0) => {
+                  i++;
+                  return (
+                    <Checkbox index={i} name={diet}
+                              onClick={e => this.setState(propByKey(e.target.value, !this.state[e.target.value]))}/>
+                  );
+                })}
+              </div>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    )
+  }
+}
+
+
+class Step2 extends React.Component {
   constructor(props) {
     super(props);
 
@@ -82,7 +130,7 @@ class CreateProfile extends React.Component {
 
   render() {
     return (
-      <div className="page profile">
+      <div className="page step-2">
         <Grid>
           <Row>
             <Col lg={6} lgOffset={3}>
@@ -121,5 +169,6 @@ class CreateProfile extends React.Component {
     )
   }
 }
+
 
 export default ProfilePage

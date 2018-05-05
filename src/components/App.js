@@ -17,8 +17,8 @@ import ProfilePage from '../pages/profile/create';
 const App = () =>
   <Router>
     <div>
-      <Navigation/>
-      <hr/>
+      {/*<Navigation/>*/}
+      {/*<hr/>*/}
       <Route exact path={routes.LANDING} component={() => <LandingPage/>}/>
       <Route exact path={routes.SIGN_UP} component={() => <SignUpPage/>}/>
       <Route exact path={routes.SIGN_IN} component={() => <SignInPage/>}/>
