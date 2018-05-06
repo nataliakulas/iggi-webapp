@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap'
 
 import {db} from '../../firebase/index';
-import Diet from '../../constants/diet';
+import Group from '../../constants/group';
 
 import {propByKey} from '../../helpers';
 
@@ -20,15 +20,19 @@ class Step1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      all: false,
-      lactovegetarian: false,
-      ovovegetarian: false,
-      ovolactovegetarian: false,
-      pescovegetarian: false,
-      pollovegetarian: false,
-      semivegetarian: false,
-      vegetarian: false,
-      glutenfree: false
+      'owoce': false,
+      'warzywa': false,
+      'kasze': false,
+      'zboża': false,
+      'nasiona': false,
+      'orzechy': false,
+      'przyprawy': false,
+      'mleko': false,
+      'nabiał': false,
+      'jaja': false,
+      'bez glutenu': false,
+      'napoje': false,
+      'alkohol': false,
     }
   }
 
@@ -40,10 +44,10 @@ class Step1 extends React.Component {
           <Row>
             <Col lg={6} lgOffset={3}>
               <div className="card">
-                {Diet.map((diet, i = 0) => {
+                {Group.map((product, i = 0) => {
                   i++;
                   return (
-                    <Checkbox index={i} name={diet}
+                    <Checkbox index={i} name={product}
                               onClick={e => this.setState(propByKey(e.target.value, !this.state[e.target.value]))}/>
                   );
                 })}
