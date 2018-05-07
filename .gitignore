@@ -11,7 +11,7 @@
 
 #css
 src/**/*.css
-global.css
+src/styles/global.css
 
 # misc
 .DS_Store
@@ -24,4 +24,4 @@ global.css
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
+package-lock.json*

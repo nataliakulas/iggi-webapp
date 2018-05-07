@@ -3,9 +3,7 @@ import {Grid, Row, Col} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {compose} from 'recompose';
 
-import {db} from '../../firebase/index';
-
-import {setActiveList} from '../../actions';
+import {setActiveMenuList, getProductsThunk} from '../../actions';
 
 import Group from '../../constants/group';
 
@@ -13,11 +11,13 @@ import Checkbox from '../../components/Checkbox';
 
 
 const mapStateToProps = state => ({
-  list: state.listState.list
+  menuList: state.menuListState.menuList,
+  products: state.productsState.products
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSetActiveList: (list) => dispatch(setActiveList(list))
+  onSetActiveMenuList: (menuList) => dispatch(setActiveMenuList(menuList)),
+  onGetProducts: () => dispatch(getProductsThunk())
 });
 
 class Step2 extends React.Component {
@@ -25,31 +25,16 @@ class Step2 extends React.Component {
     super(props);
 
     this.state = {
-      hasProducts: false,
-      products: null
+      hasProducts: this.props.products,
     };
   }
 
   componentDidMount() {
-    db.getProducts().then(snap => {
-        const products = [];
-
-        snap.forEach(item => {
-          let product = item.val();
-          product.name = item.key;
-
-          products.push(product)
-        });
-
-        if (products.length > 0) {
-          this.setState(() => ({hasProducts: true, products: products}))
-        }
-      }
-    );
+    this.props.onGetProducts();
   }
 
-
   render() {
+    console.log(this.props)
     return (
       <div className="page step-2">
         <Grid>
@@ -61,14 +46,16 @@ class Step2 extends React.Component {
                     {Group.map((product, i) => {
                       i++;
                       return (
-                        <li key={i} className={`${this.props.list === product ? "active" : ""}`} onClick={() => this.props.onSetActiveList(product)}>{product}</li>
+                        <li key={i} className={`${this.props.menuList === product ? "active" : ""}`} onClick={() => this.props.onSetActiveMenuList(product)}>{product}</li>
                       )
                     })}
                   </ul>
 
-                  {this.props.list && this.state.products.map((product, i) => {
-                    if (product.group === this.props.list) {
-                      return <Checkbox index={i} name={product.name}/>
+                  {this.props.menuList && this.props.products.map((product, i) => {
+                    if (product.group === this.props.menuList) {
+                      return <Checkbox key={i} name={product.name}/>
+                    } else {
+                      return <div key={i}/>
                     }
                   })}
                 </div>

@@ -38,7 +38,7 @@ class Step1 extends React.Component {
               <div className="card">
                 {Group.map((product, i = 0) => {
                   i++;
-                  return <Checkbox index={i} name={product} type="slider"
+                  return <Checkbox key={i} name={product} type="slider"
                                    onClick={e => this.setState(propByKey(e.target.value, !this.state[e.target.value]))}/>
                     ;
                 })}
