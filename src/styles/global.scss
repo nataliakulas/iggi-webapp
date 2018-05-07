@@ -94,8 +94,7 @@ body {
   }
 }
 
-.checkbox-wrapper.slider {
-  height: 30px;
+.checkbox-wrapper {
   display: block;
   position: relative;
   line-height: 14px;
@@ -128,6 +127,41 @@ body {
       cursor: pointer;
       user-select: none;
       text-transform: capitalize;
+
+      &:before {
+        content: " ";
+        height: 14px;
+
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        transition: background 0.2s ease-out;
+      }
+    }
+
+    &:checked {
+      & + span {
+        &:before {
+          transition: background 0.2s ease-in;
+        }
+      }
+    }
+
+    &[disabled] + span {
+      cursor: not-allowed;
+      &:before,
+      &:after {
+        opacity: .4;
+      }
+    }
+  }
+}
+
+.checkbox-wrapper.slider {
+  height: 30px;
+
+  input {
+    & + span {
       padding-left: 15px;
 
       &:empty {
@@ -135,15 +169,11 @@ body {
       }
 
       &:before {
-        content: " ";
         width: 28px;
-        height: 14px;
-        display: inline-block;
-        position: absolute;
-        left: 0;
+
         background: $aquamarine;
         border: 1px solid $aquamarine;
-        transition: background 0.2s ease-out;
+
         border-radius: 14px;
       }
 
@@ -168,19 +198,33 @@ body {
         &:after {
           transform: translateX(14px);
         }
+
         &:before {
-          transition: background 0.2s ease-in;
           background: $turquoise;
           border-color: $turquoise;
         }
       }
     }
+  }
+}
 
-    &[disabled] + span {
-      cursor: not-allowed;
-      &:before,
-      &:after {
-        opacity: .4;
+.checkbox-wrapper.tick {
+  height: 20px;
+  margin-top: 10px;
+
+  input {
+    & + span {
+      &:before {
+        width: 14px;
+        background-image: url("../media/icons/tick.svg");
+      }
+    }
+
+    &:checked {
+      & + span {
+        &:before {
+          background-image: url("../media/icons/tick-checked.svg");
+        }
       }
     }
   }

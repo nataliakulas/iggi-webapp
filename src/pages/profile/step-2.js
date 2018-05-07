@@ -9,7 +9,6 @@ import {setActiveList} from '../../actions';
 
 import Group from '../../constants/group';
 
-import {propByKey} from '../../helpers';
 import Checkbox from '../../components/Checkbox';
 
 
@@ -67,9 +66,9 @@ class Step2 extends React.Component {
                     })}
                   </ul>
 
-                  {this.props.list && this.state.products.map(product => {
+                  {this.props.list && this.state.products.map((product, i) => {
                     if (product.group === this.props.list) {
-                      return <div className="name">{product.name}</div>
+                      return <Checkbox index={i} name={product.name}/>
                     }
                   })}
                 </div>
