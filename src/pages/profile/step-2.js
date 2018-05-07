@@ -1,10 +1,11 @@
 import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
-import {connect} from 'react-redux';
 import {compose} from 'recompose';
+import {connect} from 'react-redux';
 
-import {setActiveMenuList, getProductsThunk} from '../../actions';
+import {setActiveMenuList, getProductsThunk, setUserProducts} from '../../actions';
 
+import {ProductsForm} from '../../components/Forms';
 import Checkbox from '../../components/Checkbox';
 
 const mapStateToProps = state => ({
@@ -14,7 +15,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onSetActiveMenuList: (menuList) => dispatch(setActiveMenuList(menuList)),
-  onGetProducts: () => dispatch(getProductsThunk())
+  onGetProducts: () => dispatch(getProductsThunk()),
+  onSetUserProducts: (userProducts) => dispatch(setUserProducts(userProducts))
 });
 
 class Step2 extends React.Component {
@@ -29,6 +31,10 @@ class Step2 extends React.Component {
   componentDidMount() {
     this.props.onGetProducts();
   }
+
+  onSubmit = userProducts => {
+    this.props.onSetUserProducts(userProducts)
+  };
 
   render() {
     const group = [];
@@ -50,19 +56,19 @@ class Step2 extends React.Component {
                   <ul className="card-menu">
                     {group.map((item, i) => {
                       i++;
-
                       return <li key={i} className={`${this.props.menuList === item ? "active" : ""}`}
                                  onClick={() => this.props.onSetActiveMenuList(item)}>{item}</li>
                     })}
                   </ul>
-
-                  {this.props.menuList && this.props.products.map((product, i) => {
-                    if (product.group === this.props.menuList) {
-                      return <Checkbox key={i} name={product.name}/>
-                    } else {
-                      return <div key={i}/>
-                    }
-                  })}
+                  <ProductsForm onSubmit={this.onSubmit}>
+                    {this.props.menuList && this.props.products.map((product, i) => {
+                      if (product.group === this.props.menuList) {
+                        return <Checkbox key={i} name={product.name}/>
+                      } else {
+                        return <div key={i}/>
+                      }
+                    })}
+                  </ProductsForm>
                 </div>
                 : null}
             </Col>

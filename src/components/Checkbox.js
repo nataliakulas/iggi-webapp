@@ -1,10 +1,12 @@
 import React from 'react';
+import {Field} from 'redux-form';
 
 export default (props) => {
   return (
     <div className={`checkbox-wrapper${props.type ? " slider" : " tick"}`}>
       <label className="checkbox">
-        <input type="checkbox" checked={props.checked} onClick={props.onClick} value={props.name}/><span>{props.name}</span>
+        <Field name={props.name} component="input" type="checkbox"/>
+        <span>{props.name}</span>
       </label>
     </div>
   )

@@ -1,20 +1,20 @@
 import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
-import {connect} from 'react-redux';
 import {compose} from 'recompose';
+import {connect} from 'react-redux';
 
-import {getProductsThunk, setActiveMenuList} from '../../actions';
-import {propByKey} from '../../helpers';
+import {getProductsThunk, setUserGroups} from '../../actions';
 
+import {GroupsForm} from '../../components/Forms';
 import Checkbox from '../../components/Checkbox';
-
 
 const mapStateToProps = state => ({
   products: state.productsState.products
 });
 
 const mapDispatchToProps = dispatch => ({
-  onGetProducts: () => dispatch(getProductsThunk())
+  onGetProducts: () => dispatch(getProductsThunk()),
+  onSetUserGroups: (userGroups) => dispatch(setUserGroups(userGroups))
 });
 
 class Step1 extends React.Component {
@@ -29,6 +29,10 @@ class Step1 extends React.Component {
   componentDidMount() {
     this.props.onGetProducts();
   }
+
+  onSubmit = userGroups => {
+    this.props.onSetUserGroups(userGroups)
+  };
 
   render() {
     const group = [];
@@ -46,11 +50,13 @@ class Step1 extends React.Component {
           <Row>
             <Col lg={6} lgOffset={3}>
               <div className="card">
-                {group.map((item, i) => {
-                  i++;
-                  return <Checkbox key={i} name={item} type="slider"
-                                   onClick={e => this.setState(propByKey(e.target.value, !this.state[e.target.value]))}/>;
-                })}
+                <GroupsForm onSubmit={this.onSubmit}>
+                  {group.map((item, i) => {
+                    i++;
+                    return <Checkbox key={i} type="slider" name={item}/>
+                  })}
+                  <button type="submit">Submit</button>
+                </GroupsForm>
               </div>
             </Col>
           </Row>
