@@ -2,7 +2,6 @@ import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
-import {db} from '../../firebase/index';
 import Group from '../../constants/group';
 
 import {propByKey} from '../../helpers';
