@@ -1,46 +1,55 @@
 import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
 import {connect} from 'react-redux';
+import {compose} from 'recompose';
 
-import Group from '../../constants/group';
-
+import {getProductsThunk, setActiveMenuList} from '../../actions';
 import {propByKey} from '../../helpers';
 
 import Checkbox from '../../components/Checkbox';
 
+
+const mapStateToProps = state => ({
+  products: state.productsState.products
+});
+
+const mapDispatchToProps = dispatch => ({
+  onGetProducts: () => dispatch(getProductsThunk())
+});
+
 class Step1 extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      'owoce': false,
-      'warzywa': false,
-      'kasze': false,
-      'zboża': false,
-      'nasiona': false,
-      'orzechy': false,
-      'przyprawy': false,
-      'mleko': false,
-      'nabiał': false,
-      'jaja': false,
-      'bez glutenu': false,
-      'napoje': false,
-      'alkohol': false,
-    }
+      hasProducts: this.props.products,
+    };
+  }
+
+  componentDidMount() {
+    this.props.onGetProducts();
   }
 
   render() {
-    console.log(this.state)
+    const group = [];
+    if (this.state.hasProducts) {
+      this.props.products.forEach((product) => {
+        if (group.indexOf(product.group) < 0) {
+          group.push(product.group)
+        }
+      });
+    }
+
     return (
       <div className="page step-1">
         <Grid>
           <Row>
             <Col lg={6} lgOffset={3}>
               <div className="card">
-                {Group.map((product, i = 0) => {
+                {group.map((item, i) => {
                   i++;
-                  return <Checkbox key={i} name={product} type="slider"
-                                   onClick={e => this.setState(propByKey(e.target.value, !this.state[e.target.value]))}/>
-                    ;
+                  return <Checkbox key={i} name={item} type="slider"
+                                   onClick={e => this.setState(propByKey(e.target.value, !this.state[e.target.value]))}/>;
                 })}
               </div>
             </Col>
@@ -51,4 +60,7 @@ class Step1 extends React.Component {
   }
 }
 
-export default connect()(Step1)
+export default compose(
+  connect(null, mapDispatchToProps),
+  connect(mapStateToProps)
+)(Step1)

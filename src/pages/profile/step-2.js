@@ -5,10 +5,7 @@ import {compose} from 'recompose';
 
 import {setActiveMenuList, getProductsThunk} from '../../actions';
 
-import Group from '../../constants/group';
-
 import Checkbox from '../../components/Checkbox';
-
 
 const mapStateToProps = state => ({
   menuList: state.menuListState.menuList,
@@ -34,7 +31,15 @@ class Step2 extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    const group = [];
+    if (this.state.hasProducts) {
+      this.props.products.forEach((product) => {
+        if (group.indexOf(product.group) < 0) {
+          group.push(product.group)
+        }
+      });
+    }
+
     return (
       <div className="page step-2">
         <Grid>
@@ -43,11 +48,11 @@ class Step2 extends React.Component {
               {this.state.hasProducts ?
                 <div className="card">
                   <ul className="card-menu">
-                    {Group.map((product, i) => {
+                    {group.map((item, i) => {
                       i++;
-                      return (
-                        <li key={i} className={`${this.props.menuList === product ? "active" : ""}`} onClick={() => this.props.onSetActiveMenuList(product)}>{product}</li>
-                      )
+
+                      return <li key={i} className={`${this.props.menuList === item ? "active" : ""}`}
+                                 onClick={() => this.props.onSetActiveMenuList(item)}>{item}</li>
                     })}
                   </ul>
 
