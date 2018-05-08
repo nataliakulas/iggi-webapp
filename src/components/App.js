@@ -19,8 +19,7 @@ import Step2 from '../pages/profile/step-2';
 const App = () =>
   <Router>
     <div>
-      {/*<Navigation/>*/}
-      {/*<hr/>*/}
+      <Navigation/>
       <Route exact path={routes.LANDING} component={() => <LandingPage/>}/>
       <Route exact path={routes.SIGN_UP} component={() => <SignUpPage/>}/>
       <Route exact path={routes.SIGN_IN} component={() => <SignInPage/>}/>
