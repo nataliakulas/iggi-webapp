@@ -10,13 +10,13 @@ import Checkbox from '../../components/Checkbox';
 import Button from '../../components/Button';
 
 const mapStateToProps = state => ({
-  menuList: state.menuListState.menuList,
+  menuItem: state.menuListState.menuItem,
   products: state.productsState.products,
   userProducts: state.form.userProducts
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSetActiveMenuList: (menuList) => dispatch(setActiveMenuList(menuList)),
+  onSetActiveMenuList: (item) => dispatch(setActiveMenuList(item)),
   onGetProducts: () => dispatch(getProductsThunk())
 });
 
@@ -58,13 +58,13 @@ class Step2 extends React.Component {
                   <ul className="card-menu">
                     {group.map((item, i) => {
                       i++;
-                      return <li key={i} className={`${this.props.menuList === item ? "active" : ""}`}
+                      return <li key={i} className={`${this.props.menuItem === item ? "active" : ""}`}
                                  onClick={() => this.props.onSetActiveMenuList(item)}>{item}</li>
                     })}
                   </ul>
                   <ProductsForm>
-                    {this.props.menuList && this.props.products.map((product, i) => {
-                      if (product.group === this.props.menuList) {
+                    {this.props.menuItem && this.props.products.map((product, i) => {
+                      if (product.group === this.props.menuItem) {
                         return <Checkbox key={i} name={product.name}/>
                       } else {
                         return <div key={i}/>

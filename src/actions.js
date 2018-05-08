@@ -2,10 +2,10 @@ import * as firebase from 'firebase';
 
 const db = firebase.database();
 
-export const SET_ACTIVE_MENU_LIST = 'SET_ACTIVE_MENU_LIST';
+export const SET_ACTIVE_MENU_ITEM = 'SET_ACTIVE_MENU_ITEM';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 
-export const setActiveMenuList = list => ({type: SET_ACTIVE_MENU_LIST, payload: list});
+export const setActiveMenuList = item => ({type: SET_ACTIVE_MENU_ITEM, payload: item});
 export const getProducts = products => ({type: GET_PRODUCTS, payload: products});
 
 export function getProductsThunk() {

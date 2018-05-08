@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 
-import {SET_ACTIVE_MENU_LIST, GET_PRODUCTS, SET_USER_GROUPS, SET_USER_PRODUCTS} from './actions';
+import {SET_ACTIVE_MENU_ITEM, GET_PRODUCTS} from './actions';
 
 const INITIAL_STATE = {
   products: []
@@ -9,10 +9,10 @@ const INITIAL_STATE = {
 
 export const activeMenuListReducer = (state = {}, action) => {
   switch (action.type) {
-    case SET_ACTIVE_MENU_LIST: {
+    case SET_ACTIVE_MENU_ITEM: {
       return {
         ...state,
-        menuList: action.payload
+        menuItem: action.payload
       }
     }
     default:
