@@ -1,31 +1,29 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {Grid, Row, Col} from 'react-bootstrap';
 
 import withAuthorization from './withAuthorization';
-import { db } from '../firebase';
 
 class HomePage extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
+  }
 
-        this.state = {
-            users: null,
-        };
-    }
-
-    componentDidMount() {
-        db.onceGetUsers().then(snapshot =>
-            this.setState(() => ({ users: snapshot.val() }))
-        );
-    }
-
-    render() {
-        return (
-            <div>
+  render() {
+    return (
+      <div className="page home">
+        <Grid>
+          <Row>
+            <Col lg={6} lgOffset={3}>
+              <div className="card">
                 <h1>Home</h1>
                 <p>The Home Page is accessible by every signed in user.</p>
-            </div>
-        );
-    }
+              </div>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    );
+  }
 }
 
 const authCondition = (authUser) => !!authUser;
