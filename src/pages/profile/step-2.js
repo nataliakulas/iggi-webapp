@@ -3,20 +3,21 @@ import {Grid, Row, Col} from 'react-bootstrap';
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
 
-import {setActiveMenuList, getProductsThunk, setUserProducts} from '../../actions';
+import {setActiveMenuList, getProductsThunk} from '../../actions';
 
 import {ProductsForm} from '../../components/Forms';
 import Checkbox from '../../components/Checkbox';
+import Button from '../../components/Button';
 
 const mapStateToProps = state => ({
   menuList: state.menuListState.menuList,
-  products: state.productsState.products
+  products: state.productsState.products,
+  userProducts: state.form.userProducts
 });
 
 const mapDispatchToProps = dispatch => ({
   onSetActiveMenuList: (menuList) => dispatch(setActiveMenuList(menuList)),
-  onGetProducts: () => dispatch(getProductsThunk()),
-  onSetUserProducts: (userProducts) => dispatch(setUserProducts(userProducts))
+  onGetProducts: () => dispatch(getProductsThunk())
 });
 
 class Step2 extends React.Component {
@@ -32,8 +33,9 @@ class Step2 extends React.Component {
     this.props.onGetProducts();
   }
 
-  onSubmit = userProducts => {
-    this.props.onSetUserProducts(userProducts)
+  saveUserProducts = () => {
+    let userProducts = Object.keys(this.props.userProducts.values);
+    console.log(userProducts)
   };
 
   render() {
@@ -60,7 +62,7 @@ class Step2 extends React.Component {
                                  onClick={() => this.props.onSetActiveMenuList(item)}>{item}</li>
                     })}
                   </ul>
-                  <ProductsForm onSubmit={this.onSubmit}>
+                  <ProductsForm>
                     {this.props.menuList && this.props.products.map((product, i) => {
                       if (product.group === this.props.menuList) {
                         return <Checkbox key={i} name={product.name}/>
@@ -69,6 +71,7 @@ class Step2 extends React.Component {
                       }
                     })}
                   </ProductsForm>
+                  <Button type="button" onClick={this.saveUserProducts}>Submit</Button>
                 </div>
                 : null}
             </Col>

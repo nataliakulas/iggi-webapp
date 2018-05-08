@@ -229,3 +229,21 @@ body {
     }
   }
 }
+
+.button {
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  color: $black;
+  line-height: 24px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid $turquoise;
+  border-radius: 4px;
+  margin: 20px;
+  transition: background-color 0.2s ease-in;
+
+  &:hover {
+    background-color: $banana;
+  }
+}
