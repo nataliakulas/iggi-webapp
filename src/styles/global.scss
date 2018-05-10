@@ -18,14 +18,13 @@ body {
 .navigation-bar {
   height: 500px;
   position: absolute;
-  top: 15%;
-  left: 0;
+  transform: translateX(330px);
 
   margin: 0;
   padding: 0;
 
   li {
-    width: 40px;
+    width: 120px;
     height: 40px;
 
     position: relative;
@@ -35,69 +34,75 @@ body {
 
     list-style-type: none;
 
-    background-color: $aquamarine;
+    background-color: $banana;
     border-radius: 0 4px 4px 0;
-    margin-bottom: 25px;
 
-    transition: width 0.3s ease-in;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding-left: 5px;
+
+    transform: translateX(-75px);
+    transition: transform 0.3s ease-in;
 
     &:hover {
-      width: 120px;
-
-      a {
-        left: 15px;
-      }
+      transform: translateX(0px);
     }
 
     a {
-      position: absolute;
-      left: -100px;
-
       font-size: 12px;
       color: $black;
       text-transform: uppercase;
       text-decoration: none;
-      transition: all 0.3s ease-in;
+      margin-left: 10px;
     }
   }
 }
 
 .page {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
   width: 100vw;
   height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   background-repeat: no-repeat;
   background-size: cover;
 
-  padding: 10%;
-}
+  &.landing {
+    background-image: url("../media/backgrounds/brussel-blue.jpg");
+  }
 
-.landing {
-  background-image: url("../media/backgrounds/brussel-blue.jpg");
-}
+  &.sign-up {
+    background-image: url("../media/backgrounds/broccoli-green.jpg");
+  }
 
-.sign-up {
-  background-image: url("../media/backgrounds/broccoli-green.jpg");
-}
+  &.sign-in {
+    background-image: url("../media/backgrounds/orange-blue.jpg");
+  }
 
-.sign-in {
-  background-image: url("../media/backgrounds/orange-blue.jpg");
-}
+  &.password-forget {
+    background-image: url("../media/backgrounds/apple-pink.jpg");
+  }
 
-.password-forget {
-  background-image: url("../media/backgrounds/apple-pink.jpg");
-}
+  &.home {
+    background-image: url("../media/backgrounds/lime-green.jpg");
+  }
 
-.home {
-  background-image: url("../media/backgrounds/lime-green.jpg");
-}
+  &.step-1 {
+    background-image: url("../media/backgrounds/kiwi-green.jpg");
+  }
 
-.step-1 {
-  background-image: url("../media/backgrounds/kiwi-green.jpg");
-}
-
-.step-2 {
-  background-image: url("../media/backgrounds/kiwi-pink.jpg");
+  &.step-2 {
+    background-image: url("../media/backgrounds/kiwi-pink.jpg");
+  }
 }
 
 .card {

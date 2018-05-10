@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {auth} from '../firebase';
 
 const PasswordForgetPage = () =>
-  <div className="page password-forget">
+  <div className="background password-forget">
     <Grid>
       <Row>
         <Col lg={6} lgOffset={3}>

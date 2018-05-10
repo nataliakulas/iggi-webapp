@@ -10,7 +10,7 @@ import * as routes from '../constants/routes';
 
 
 const SignUpPage = ({history}) =>
-  <div className="page sign-up">
+  <div className="background sign-up">
     <Grid>
       <Row>
         <Col lg={6} lgOffset={3}>

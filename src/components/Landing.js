@@ -3,7 +3,7 @@ import {Grid, Row, Col} from 'react-bootstrap';
 
 
 const LandingPage = () =>
-  <div className="page landing">
+  <div className="background landing">
     <Grid>
       <Row>
         <Col lg={6} lgOffset={3}>

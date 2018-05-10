@@ -10,7 +10,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="page home">
+      <div className="background home">
         <Grid>
           <Row>
             <Col lg={6} lgOffset={3}>

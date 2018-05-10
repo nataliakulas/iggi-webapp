@@ -47,7 +47,7 @@ class Step1 extends React.Component {
     }
 
     return (
-      <div className="page step-1">
+      <div className="background step-1">
         <Grid>
           <Row>
             <Col lg={6} lgOffset={3}>
