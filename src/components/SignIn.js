@@ -14,10 +14,12 @@ const SignInPage = ({history}) =>
       <Row>
         <Col lg={6} lgOffset={3}>
           <div className="card">
-            <h1>SignIn</h1>
+            <div className="card-header">
+              <h2 className="card-title">Sign In</h2>
+            </div>
             <SignInForm history={history}/>
-            <PasswordForgetLink/>
-            <SignUpLink/>
+            {/*<PasswordForgetLink/>*/}
+            {/*<SignUpLink/>*/}
           </div>
         </Col>
       </Row>
@@ -75,23 +77,26 @@ class SignInForm extends Component {
       email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form" onSubmit={this.onSubmit}>
         <input
+          className="input"
           value={email}
           onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
           type="text"
           placeholder="Email Address"
         />
         <input
+          className="input"
           value={password}
           onChange={event => this.setState(updateByPropertyName('password', event.target.value))}
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
-
+        <div className="card-footer">
+          <button className="button" disabled={isInvalid} type="submit">
+            Sign In
+          </button>
+        </div>
         {error && <p>{error.message}</p>}
       </form>
     );

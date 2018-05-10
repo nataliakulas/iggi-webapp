@@ -3,7 +3,7 @@ import {reduxForm} from 'redux-form';
 
 let GroupsForm = props => {
   return (
-    <form onSubmit={props.onSubmit}>{props.children}</form>
+    <form className={props.className} onSubmit={props.onSubmit}>{props.children}</form>
   )
 };
 
@@ -13,7 +13,7 @@ GroupsForm = reduxForm({
 
 let ProductsForm = props => {
   return (
-    <form onSubmit={props.onSubmit}>{props.children}</form>
+    <form className={props.className} onSubmit={props.onSubmit}>{props.children}</form>
   )
 };
 

@@ -55,6 +55,10 @@ class Step2 extends React.Component {
             <Col lg={6} lgOffset={3}>
               {this.state.hasProducts ?
                 <div className="card">
+                  <div className="card-header">
+                    <h2 className="card-title">Ustawienia</h2>
+                    <h3 className="card-subtitle">Wybierz produkty</h3>
+                  </div>
                   <ul className="card-menu">
                     {group.map((item, i) => {
                       i++;
@@ -62,7 +66,7 @@ class Step2 extends React.Component {
                                  onClick={() => this.props.onSetActiveMenuList(item)}>{item}</li>
                     })}
                   </ul>
-                  <ProductsForm>
+                  <ProductsForm className="card-body">
                     {this.props.menuItem && this.props.products.map((product, i) => {
                       if (product.group === this.props.menuItem) {
                         return <Checkbox key={i} name={product.name}/>
@@ -71,7 +75,9 @@ class Step2 extends React.Component {
                       }
                     })}
                   </ProductsForm>
-                  <Button type="button" onClick={this.saveUserProducts}>Submit</Button>
+                  <div className="card-footer">
+                    <Button type="button" onClick={this.saveUserProducts}>Submit</Button>
+                  </div>
                 </div>
                 : null}
             </Col>

@@ -52,13 +52,19 @@ class Step1 extends React.Component {
           <Row>
             <Col lg={6} lgOffset={3}>
               <div className="card">
-                <GroupsForm>
+                <div className="card-header">
+                  <h2 className="card-title">Ustawienia</h2>
+                  <h3 className="card-subtitle">Wybierz grupy produktów</h3>
+                </div>
+                <GroupsForm className="card-body">
                   {group.map((item, i) => {
                     i++;
                     return <Checkbox key={i} type="slider" name={item}/>
                   })}
                 </GroupsForm>
-                <Button type="button" onClick={this.saveUserGroups}>Submit</Button>
+                <div className="card-footer">
+                  <Button type="button" onClick={this.saveUserGroups}>Submit</Button>
+                </div>
               </div>
             </Col>
           </Row>

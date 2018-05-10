@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>multiply</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="multiply" fill="#00293c" fill-rule="nonzero">
+            <path d="M0,0 L0,60 L60,60 L60,0 L0,0 Z M58,58 L2,58 L2,2 L58,2 L58,58 Z" id="Shape"></path>
+            <polygon id="Shape" points="16.009 45.405 30.151 31.263 44.293 45.405 45.707 43.991 31.565 29.849 45.707 15.707 44.293 14.293 30.151 28.435 16.009 14.293 14.595 15.707 28.737 29.849 14.595 43.991"></polygon>
+        </g>
+    </g>
+</svg>

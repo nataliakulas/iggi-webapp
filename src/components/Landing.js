@@ -8,7 +8,12 @@ const LandingPage = () =>
       <Row>
         <Col lg={6} lgOffset={3}>
           <div className="card">
-            <h1>This is a landing page</h1>
+            <div className="card-header">
+              <h2 className="card-title"><b>I</b>ndeks&nbsp;<b>G</b>likemiczny&nbsp;-&nbsp;<b>G</b>lycemic&nbsp;<b>I</b>ndex</h2>
+            </div>
+            <div className="card-body">
+              Indeks glikemiczny ...
+            </div>
           </div>
         </Col>
       </Row>

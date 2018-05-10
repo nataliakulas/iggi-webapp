@@ -8,14 +8,15 @@ import {auth, db} from '../firebase';
 
 import * as routes from '../constants/routes';
 
-
 const SignUpPage = ({history}) =>
   <div className="background sign-up">
     <Grid>
       <Row>
         <Col lg={6} lgOffset={3}>
           <div className="card">
-            <h1>SignUp</h1>
+            <div className="card-header">
+              <h2 className="card-title">Sign up</h2>
+            </div>
             <SignUpForm history={history}/>
           </div>
         </Col>
@@ -90,35 +91,40 @@ class SignUpForm extends Component {
       email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form" onSubmit={this.onSubmit}>
         <input
+          className="input"
           value={username}
           onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
           type="text"
           placeholder="Full Name"
         />
         <input
+          className="input"
           value={email}
           onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
           type="text"
           placeholder="Email Address"
         />
         <input
+          className="input"
           value={passwordOne}
           onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
           type="password"
           placeholder="Password"
         />
         <input
+          className="input"
           value={passwordTwo}
           onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
           type="password"
           placeholder="Confirm Password"
         />
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
-
+        <div className="card-footer">
+          <button className="button" disabled={isInvalid} type="submit">
+            Sign Up
+          </button>
+        </div>
         {error && <p>{error.message}</p>}
       </form>
     );
