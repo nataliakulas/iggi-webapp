@@ -42,7 +42,7 @@ body {
     transition: transform 0.3s ease-in; }
     .navigation-bar li:hover {
       transform: translateX(27px); }
-    .navigation-bar li.home {
+    .navigation-bar li.landing {
       background-image: url("../media/icons/home.svg"); }
     .navigation-bar li.log-in {
       background-image: url("../media/icons/log-in.svg"); }
@@ -77,13 +77,17 @@ body {
   .background.landing {
     background-image: url("../media/backgrounds/brussel-blue.jpg"); }
   .background.sign-up {
-    background-image: url("../media/backgrounds/broccoli-green.jpg"); }
-  .background.sign-in {
+    background-image: url("../media/backgrounds/orange-orange.jpg"); }
+  .background.log-in {
     background-image: url("../media/backgrounds/orange-blue.jpg"); }
   .background.password-forget {
+    background-image: url("../media/backgrounds/cookies-pink.jpg"); }
+  .background.dashboard {
+    background-image: url("../media/backgrounds/broccoli-green.jpg"); }
+  .background.info {
     background-image: url("../media/backgrounds/apple-pink.jpg"); }
-  .background.home {
-    background-image: url("../media/backgrounds/lime-green.jpg"); }
+  .background.settings {
+    background-image: url("../media/backgrounds/banana-blue.jpg"); }
   .background.step-1 {
     background-image: url("../media/backgrounds/kiwi-green.jpg"); }
   .background.step-2 {
