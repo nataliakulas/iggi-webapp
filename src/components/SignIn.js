@@ -9,7 +9,7 @@ import * as routes from '../constants/routes';
 
 
 const SignInPage = ({history}) =>
-  <div className="background sign-in">
+  <div className="background log-in">
     <Grid>
       <Row>
         <Col lg={6} lgOffset={3}>

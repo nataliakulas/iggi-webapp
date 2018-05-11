@@ -15,7 +15,7 @@ const Navigation = () =>
 
 const NavigationUserNonRegister = () =>
   <ul className="navigation-bar">
-    <li className="home"><Link to={routes.LANDING}><span>Strona główna</span></Link></li>
+    <li className="landing"><Link to={routes.LANDING}><span>Strona główna</span></Link></li>
     <li className="log-in"><Link to={routes.SIGN_IN}><span>Logowanie</span></Link></li>
     <li className="sign-up"><Link to={routes.SIGN_UP}><span>Rejestracja</span></Link></li>
     <li className="info"><Link to={routes.INFO}><span>Informacje</span></Link></li>
@@ -24,7 +24,7 @@ const NavigationUserNonRegister = () =>
 
 const NavigationUserRegister = () =>
   <ul className="navigation-bar">
-    <li className="home"><Link to={routes.LANDING}><span>Strona główna</span></Link></li>
+    <li className="landing"><Link to={routes.LANDING}><span>Strona główna</span></Link></li>
     <li className="dashboard"><Link to={routes.DASHBOARD}><span>Panel główny</span></Link></li>
     <li className="settings"><Link to={routes.SETTINGS}>Ustawienia</Link></li>
     <li className="info"><Link to={routes.INFO}><span>Informacje</span></Link></li>

@@ -69,7 +69,7 @@ body {
       transform: translateX(27px);
     }
 
-    &.home {
+    &.landing {
       background-image: url("../media/icons/home.svg");
     }
 
@@ -130,16 +130,24 @@ body {
     background-image: url("../media/backgrounds/broccoli-green.jpg");
   }
 
-  &.sign-in {
+  &.log-in {
     background-image: url("../media/backgrounds/orange-blue.jpg");
   }
 
   &.password-forget {
-    background-image: url("../media/backgrounds/apple-pink.jpg");
+    background-image: url("../media/backgrounds/orange-orange.jpg");
   }
 
-  &.home {
+  &.dashboard {
     background-image: url("../media/backgrounds/lime-green.jpg");
+  }
+
+  &.info {
+    background-image: url("../media/backgrounds/lime-pink.jpg");
+  }
+
+  &.settings {
+    background-image: url("../media/backgrounds/banana-blue.jpg");
   }
 
   &.step-1 {
