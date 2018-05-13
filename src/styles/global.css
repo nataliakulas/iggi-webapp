@@ -34,7 +34,7 @@ body {
     border-radius: 0 4px 4px 0;
     box-shadow: 0 0 1px 0px rgba(0, 41, 60, 0.75);
     background-repeat: no-repeat;
-    background-size: 25px;
+    background-size: 26px;
     background-position: 92% center;
     margin: 10px;
     padding-left: 10px;
@@ -236,9 +236,9 @@ body {
     width: 20px;
     height: 20px;
     background-size: 20px;
-    background-image: url("../media/icons/unchecked.svg"); }
+    background-image: url("../media/icons/error.svg"); }
   .checkbox-wrapper.tick input:checked + span:before {
-    background-image: url("../media/icons/checked.svg"); }
+    background-image: url("../media/icons/success.svg"); }
 
 .button {
   display: inline-block;
@@ -280,3 +280,5 @@ body {
     opacity: 0.75; }
   .input:hover {
     border-color: #1e656d; }
+
+/*# sourceMappingURL=global.css.map */
