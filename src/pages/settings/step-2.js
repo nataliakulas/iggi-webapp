@@ -3,20 +3,20 @@ import {Grid, Row, Col} from 'react-bootstrap';
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
 
-import {setActiveMenuList, getProductsThunk} from '../../actions';
+import {setActiveMenuItem, getProductsThunk} from '../../actions';
 
 import {ProductsForm} from '../../components/Forms';
 import Checkbox from '../../components/Checkbox';
 import Button from '../../components/Button';
 
 const mapStateToProps = state => ({
-  menuItem: state.menuListState.menuItem,
+  menuItem: state.menuItemState.menuItem,
   products: state.productsState.products,
   userProducts: state.form.userProducts
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSetActiveMenuList: (item) => dispatch(setActiveMenuList(item)),
+  onSetActiveMenuItem: (item) => dispatch(setActiveMenuItem(item)),
   onGetProducts: () => dispatch(getProductsThunk())
 });
 
@@ -63,7 +63,7 @@ class Step2 extends React.Component {
                     {group.map((item, i) => {
                       i++;
                       return <li key={i} className={`${this.props.menuItem === item ? "active" : ""}`}
-                                 onClick={() => this.props.onSetActiveMenuList(item)}>{item}</li>
+                                 onClick={() => this.props.onSetActiveMenuItem(item)}>{item}</li>
                     })}
                   </ul>
                   <ProductsForm className="card-body">

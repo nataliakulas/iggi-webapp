@@ -15,7 +15,7 @@ import withAuthentication from './withAuthentication';
 import Settings from '../pages/settings';
 import Step1 from '../pages/settings/step-1';
 import Step2 from '../pages/settings/step-2';
-import Info from '../pages/settings/info';
+import Info from '../pages/info';
 
 const App = () =>
   <Router>

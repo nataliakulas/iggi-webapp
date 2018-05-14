@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   products: []
 };
 
-export const activeMenuListReducer = (state = {}, action) => {
+export const activeMenuItemReducer = (state = {}, action) => {
   switch (action.type) {
     case SET_ACTIVE_MENU_ITEM: {
       return {
@@ -36,7 +36,7 @@ export const productsReducer = (state = INITIAL_STATE, action) => {
 
 const rootReducer = combineReducers({
   form: formReducer,
-  menuListState: activeMenuListReducer,
+  menuItemState: activeMenuItemReducer,
   productsState: productsReducer
 });
 
