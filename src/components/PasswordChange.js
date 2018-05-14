@@ -22,7 +22,7 @@ class PasswordChangeForm extends Component {
     onSubmit = (event) => {
         const { passwordOne } = this.state;
 
-        auth.doPasswordUpdate(passwordOne)
+        auth.passwordUpdate(passwordOne)
             .then(() => {
                 this.setState(() => ({ ...INITIAL_STATE }));
             })

@@ -43,11 +43,11 @@ class SignUpForm extends Component {
             history,
         } = this.props;
 
-        auth.doCreateUserWithEmailAndPassword(email, passwordOne)
+        auth.registerUser(email, passwordOne)
             .then(authUser => {
 
                 // Create a user in your own accessible Firebase Database too
-                db.doCreateUser(authUser.uid, username, email)
+                db.createUser(authUser.uid, username, email)
                     .then(() => {
                         this.setState(() => ({ ...INITIAL_STATE }));
                         history.push(routes.HOME);

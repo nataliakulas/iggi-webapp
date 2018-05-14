@@ -5,7 +5,7 @@ import { auth } from '../firebase';
 
 const PasswordForgetPage = () =>
     <div>
-        <h1>PasswordForget</h1>
+        <h1>Password Forget</h1>
         <PasswordForgetForm />
     </div>
 
@@ -28,7 +28,7 @@ class PasswordForgetForm extends Component {
     onSubmit = (event) => {
         const { email } = this.state;
 
-        auth.doPasswordReset(email)
+        auth.passwordReset(email)
             .then(() => {
                 this.setState(() => ({ ...INITIAL_STATE }));
             })
