@@ -26,9 +26,9 @@ const withAuthorization = (condition) => (Component) => {
     });
 
     return compose(
-        withRouter,
         connect(mapStateToProps),
+        withRouter,
     )(WithAuthorization);
-}
+};
 
 export default withAuthorization;
