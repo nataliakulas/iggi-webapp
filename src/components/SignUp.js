@@ -5,6 +5,8 @@ withRouter,
 import { auth, db } from '../firebase';
 
 import * as routes from '../constants/routes';
+import {updateByPropertyName} from './helpers';
+
 
 
 const SignUpPage = ({ history }) =>
@@ -12,10 +14,6 @@ const SignUpPage = ({ history }) =>
         <h1>SignUp</h1>
         <SignUpForm history={history} />
     </div>
-
-const updateByPropertyName = (propertyName, value) => () => ({
-    [propertyName]: value,
-});
 
 const INITIAL_STATE = {
     username: '',

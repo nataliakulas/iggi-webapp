@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { auth } from '../firebase';
+import {updateByPropertyName} from './helpers';
 
 const PasswordForgetPage = () =>
     <div>
         <h1>Password Forget</h1>
         <PasswordForgetForm />
     </div>
-
-const byPropKey = (propertyName, value) => () => ({
-    [propertyName]: value,
-});
 
 const INITIAL_STATE = {
     email: '',
@@ -33,7 +30,7 @@ class PasswordForgetForm extends Component {
                 this.setState(() => ({ ...INITIAL_STATE }));
             })
             .catch(error => {
-                this.setState(byPropKey('error', error));
+                this.setState(updateByPropertyName('error', error));
             });
 
         event.preventDefault();
@@ -51,7 +48,7 @@ class PasswordForgetForm extends Component {
             <form onSubmit={this.onSubmit}>
                 <input
                     value={this.state.email}
-                    onChange={event => this.setState(byPropKey('email', event.target.value))}
+                    onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
                     type="text"
                     placeholder="Email Address"
                 />
