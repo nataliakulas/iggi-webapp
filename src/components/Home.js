@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import {authCondition} from './helpers';
+import {authCondition} from './Helpers';
 import withAuthorization from './withAuthorization';
 
 class HomePage extends Component {

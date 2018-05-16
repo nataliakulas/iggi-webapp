@@ -3,9 +3,9 @@ import {Link,
 withRouter,
 } from 'react-router-dom';
 import { auth, db } from '../firebase';
-
+import Button from './Button';
 import * as routes from '../constants/routes';
-import {updateByPropertyName} from './helpers';
+import {updateByPropertyName} from './Helpers';
 
 
 
@@ -103,9 +103,9 @@ class SignUpForm extends Component {
                     type="password"
                     placeholder="Confirm Password"
                 />
-                <button disabled={isInvalid} type="submit">
-                    Sign Up
-                </button>
+                <Button disabled={isInvalid} type="submit">
+                    Sign up
+                </Button>
 
                 { error && <p>{error.message}</p> }
             </form>

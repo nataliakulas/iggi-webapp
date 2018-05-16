@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import Button from './Button';
 import { auth } from '../firebase';
-import {updateByPropertyName} from './helpers';
+import {updateByPropertyName} from './Helpers';
 
 const PasswordForgetPage = () =>
     <div>
@@ -52,9 +52,9 @@ class PasswordForgetForm extends Component {
                     type="text"
                     placeholder="Email Address"
                 />
-                <button disabled={isInvalid} type="submit">
+                <Button disabled={isInvalid} type="submit">
                     Reset My Password
-                </button>
+                </Button>
 
                 { error && <p>{error.message}</p> }
             </form>

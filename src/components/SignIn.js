@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-
+import Button from './Button';
 import { SignUpLink } from './SignUp';
 import { PasswordForgetLink } from './PasswordForget';
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
-import {updateByPropertyName} from './helpers';
+import {updateByPropertyName} from './Helpers';
 
 
 const SignInPage = ({ history }) =>
@@ -77,9 +77,9 @@ class SignInForm extends Component {
                     type="password"
                     placeholder="Password"
                 />
-                <button disabled={isInvalid} type="submit">
+                <Button disabled={isInvalid} type="submit">
                     Sign In
-                </button>
+                </Button>
 
                 { error && <p>{error.message}</p> }
             </form>
