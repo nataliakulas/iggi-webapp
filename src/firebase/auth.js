@@ -12,13 +12,8 @@ auth.signInWithEmailAndPassword(email, password);
 export const signOut = () =>
     auth.signOut();
 
-// Password Reset
-export const passwordReset = (email) =>
-    auth.sendPasswordResetEmail(email);
-
 // Password Change
 export const passwordUpdate = (password) =>
-    auth.updatePassword(password);
-
+    auth.currentUser.updatePassword(password);
 
 
