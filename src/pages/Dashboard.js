@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import {authCondition} from '../components/Helpers';
 import withAuthorization from './withAuthorization';
 
-class HomePage extends Component {
+class HomePage extends React.Component{
 
     render() {
         return (

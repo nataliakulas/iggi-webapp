@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Button from '../components/Button';
 import { SignUpLink } from './SignUp';
@@ -23,7 +23,7 @@ const INITIAL_STATE = {
     error: null,
 };
 
-class SignInForm extends Component {
+class SignInForm extends React.Component {
     constructor(props) {
         super(props);
 

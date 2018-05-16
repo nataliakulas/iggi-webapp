@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { auth } from '../firebase/index';
 import {updateByPropertyName} from '../components/Helpers';
 import Button from '../components/Button';
@@ -10,7 +10,7 @@ const INITIAL_STATE = {
     error: null,
 };
 
-class PasswordChangeForm extends Component {
+class PasswordChangeForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = { ...INITIAL_STATE };

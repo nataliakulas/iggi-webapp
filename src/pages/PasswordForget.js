@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import { auth } from '../firebase/index';
@@ -15,7 +15,7 @@ const INITIAL_STATE = {
     error: null,
 };
 
-class PasswordForgetForm extends Component {
+class PasswordForgetForm extends React.Component {
     constructor(props) {
         super(props);
 

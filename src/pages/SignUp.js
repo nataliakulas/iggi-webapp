@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link,
 withRouter,
 } from 'react-router-dom';
@@ -23,7 +23,7 @@ const INITIAL_STATE = {
     error: null,
 };
 
-class SignUpForm extends Component {
+class SignUpForm extends React.Component {
     constructor(props) {
         super(props);
 
