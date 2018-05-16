@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {Link,
 withRouter,
 } from 'react-router-dom';
-import { auth, db } from '../firebase';
-import Button from './Button';
+import { auth, db } from '../firebase/index';
+import Button from '../components/Button';
 import * as routes from '../constants/routes';
-import {updateByPropertyName} from './Helpers';
+import {updateByPropertyName} from '../components/Helpers';
 
 
 
@@ -44,7 +44,6 @@ class SignUpForm extends Component {
         auth.registerUser(email, passwordOne)
             .then(authUser => {
 
-                // Create a user in your own accessible Firebase Database too
                 db.createUser(authUser.uid, username, email)
                     .then(() => {
                         this.setState(() => ({ ...INITIAL_STATE }));

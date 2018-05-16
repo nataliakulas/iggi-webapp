@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Button from './Button';
-import { auth } from '../firebase';
-import {updateByPropertyName} from './Helpers';
+import Button from '../components/Button';
+import { auth } from '../firebase/index';
+import {updateByPropertyName} from '../components/Helpers';
 
 const PasswordForgetPage = () =>
     <div>

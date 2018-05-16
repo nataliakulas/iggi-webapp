@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import { firebase } from '../firebase';
+import { firebase } from '../firebase/index';
 import * as routes from '../constants/routes';
 
 

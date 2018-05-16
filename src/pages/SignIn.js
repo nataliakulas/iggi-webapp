@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Button from './Button';
+import Button from '../components/Button';
 import { SignUpLink } from './SignUp';
 import { PasswordForgetLink } from './PasswordForget';
-import { auth } from '../firebase';
+import { auth } from '../firebase/index';
 import * as routes from '../constants/routes';
-import {updateByPropertyName} from './Helpers';
+import {updateByPropertyName} from '../components/Helpers';
 
 
 const SignInPage = ({ history }) =>

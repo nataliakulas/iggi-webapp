@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { auth } from '../firebase';
-import {updateByPropertyName} from './Helpers';
-import Button from './Button';
+import { auth } from '../firebase/index';
+import {updateByPropertyName} from '../components/Helpers';
+import Button from '../components/Button';
 
 
 const INITIAL_STATE = {
