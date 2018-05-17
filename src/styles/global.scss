@@ -23,9 +23,12 @@ body {
   outline-offset: 1px;
 }
 
+.navigation-wrapper {
+  position: absolute;
+}
+
 .navigation-bar {
   height: 500px;
-  position: absolute;
 
   display: flex;
   flex-direction: column;
@@ -134,7 +137,7 @@ body {
     background-image: url("../media/backgrounds/orange-blue.jpg");
   }
 
-  &.password-forget {
+  &.password-reset {
     background-image: url("../media/backgrounds/cookies-pink.jpg");
   }
 

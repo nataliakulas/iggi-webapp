@@ -3,7 +3,7 @@ import {Grid, Row, Col} from 'react-bootstrap';
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
 
-import {setActiveMenuItem, getProductsThunk} from '../../actions';
+import {setActiveMenuItem, getProductsThunk} from '../../state/actions';
 
 import {ProductsForm} from '../../components/Forms';
 import Checkbox from '../../components/Checkbox';

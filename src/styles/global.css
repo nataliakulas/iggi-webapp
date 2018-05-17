@@ -11,9 +11,11 @@ body {
   outline-color: #1e656d;
   outline-offset: 1px; }
 
+.navigation-wrapper {
+  position: absolute; }
+
 .navigation-bar {
   height: 500px;
-  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -80,7 +82,7 @@ body {
     background-image: url("../media/backgrounds/orange-orange.jpg"); }
   .background.log-in {
     background-image: url("../media/backgrounds/orange-blue.jpg"); }
-  .background.password-forget {
+  .background.password-reset {
     background-image: url("../media/backgrounds/cookies-pink.jpg"); }
   .background.dashboard {
     background-image: url("../media/backgrounds/broccoli-green.jpg"); }

@@ -1,16 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
-import {
-  Link,
-  withRouter,
-} from 'react-router-dom';
-import {auth, db} from '../firebase';
+import {withRouter} from 'react-router-dom';
 
-import {db} from '../firebase/index';
-import Button from '../components/Button';
-import * as routes from '../constants/routes';
-import {updateByPropertyName} from '../components/Helpers';
 import {registerUser} from '../firebase/auth';
+import {createUser} from '../firebase/db';
+
+import * as routes from '../shared/routes';
+import {updateByPropertyName} from '../shared/helpers';
+
+import Button from '../components/Button';
 
 
 const SignUpPage = ({history}) =>
@@ -20,7 +18,7 @@ const SignUpPage = ({history}) =>
         <Col lg={6} lgOffset={3}>
           <div className="card">
             <div className="card-header">
-              <h2 className="card-title">Sign up</h2>
+              <h2 className="card-title">Rejestracja</h2>
             </div>
             <SignUpForm history={history}/>
           </div>
@@ -38,8 +36,8 @@ const INITIAL_STATE = {
 };
 
 class SignUpForm extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
     this.state = {...INITIAL_STATE};
   }
@@ -55,18 +53,16 @@ class SignUpForm extends React.Component {
       history,
     } = this.props;
 
-        registerUser(email, passwordOne)
-            .then(authUser => {
-
-                db.createUser(authUser.uid, username, email)
-                    .then(() => {
-                        this.setState(() => ({ ...INITIAL_STATE }));
-                        history.push(routes.DASHBOARD);
-                    })
-                    .catch(error => {
-                        this.setState(updateByPropertyName('error', error));
-                    });
-
+    registerUser(email, passwordOne)
+      .then(authUser => {
+        createUser(authUser.uid, username, email)
+          .then(() => {
+            this.setState(() => ({...INITIAL_STATE}));
+            history.push(routes.DASHBOARD);
+          })
+          .catch(error => {
+            this.setState(updateByPropertyName('error', error));
+          });
       })
       .catch(error => {
         this.setState(updateByPropertyName('error', error));
@@ -97,33 +93,31 @@ class SignUpForm extends React.Component {
           value={username}
           onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
           type="text"
-          placeholder="Full Name"
+          placeholder="Imię i nazwisko"
         />
         <input
           className="input"
           value={email}
           onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
+          type="email"
+          placeholder="Adres e-mail"
         />
         <input
           className="input"
           value={passwordOne}
           onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
           type="password"
-          placeholder="Password"
+          placeholder="Hasło"
         />
         <input
           className="input"
           value={passwordTwo}
           onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
           type="password"
-          placeholder="Confirm Password"
+          placeholder="Powtórz hasło"
         />
         <div className="card-footer">
-          <button className="button" disabled={isInvalid} type="submit">
-            Sign Up
-          </button>
+          <Button className="button" disabled={isInvalid} type="submit">Zarejestruj</Button>
         </div>
         {error && <p>{error.message}</p>}
       </form>
@@ -131,15 +125,4 @@ class SignUpForm extends React.Component {
   }
 }
 
-const SignUpLink = () =>
-  <p>
-    Don't have an account?
-    {' '}
-    <Link to={routes.SIGN_UP}>Sign Up</Link>
-  </p>;
 export default withRouter(SignUpPage);
-
-export {
-  SignUpForm,
-  SignUpLink,
-};

@@ -1,6 +1,4 @@
-import * as firebase from 'firebase';
-
-const db = firebase.database();
+import {db} from '../firebase/config';
 
 export const SET_ACTIVE_MENU_ITEM = 'SET_ACTIVE_MENU_ITEM';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
