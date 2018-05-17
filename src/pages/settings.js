@@ -1,7 +1,10 @@
 import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {compose} from 'recompose';
+
+import * as routes from '../shared/routes';
 
 import {authCondition, updateByPropertyName} from '../shared/helpers';
 import withAuthorization from '../shared/withAuthorization';
@@ -63,6 +66,9 @@ class PasswordUpdateForm extends React.Component {
           type="password"
           placeholder="Powtórz nowe hasło"
         />
+        <ul>
+          <li><Link to={routes.STEP_1}>Personalizuj dane produktów</Link></li>
+        </ul>
         <div className="card-footer">
           <Button disabled={isInvalid} type="submit">Aktualizuj</Button>
         </div>
@@ -80,6 +86,7 @@ const Settings = ({authUser}) =>
           <div className="card">
             <div className="card-header">
               <h2 className="card-title">Ustawienia</h2>
+              <h3 className="card-subtitle">Dla konta:&nbsp;<span>{authUser.email}</span></h3>
             </div>
             <PasswordUpdateForm/>
           </div>
@@ -87,6 +94,7 @@ const Settings = ({authUser}) =>
       </Row>
     </Grid>
   </div>;
+
 
 const mapStateToProps = (state) => ({
   authUser: state.sessionState.authUser,

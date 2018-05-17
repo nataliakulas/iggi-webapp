@@ -110,6 +110,9 @@ body {
   .card .card-subtitle {
     font-size: 12px;
     margin: 0; }
+    .card .card-subtitle span {
+      color: #1e656d;
+      text-transform: lowercase; }
   .card .card-body {
     margin-top: 50px; }
   .card .card-header,
