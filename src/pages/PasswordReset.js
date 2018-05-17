@@ -4,7 +4,7 @@ import Button from '../components/Button';
 import { auth } from '../firebase/index';
 import {updateByPropertyName} from '../components/Helpers';
 
-const PasswordForgetPage = () =>
+const PasswordResetPage = () =>
     <div>
         <h1>Password Forget</h1>
         <PasswordForgetForm />
@@ -25,7 +25,7 @@ class PasswordForgetForm extends React.Component {
     onSubmit = (event) => {
         const { email } = this.state;
 
-        auth.passwordReset(email)
+       auth.passwordReset(email)
             .then(() => {
                 this.setState(() => ({ ...INITIAL_STATE }));
             })
@@ -67,7 +67,7 @@ const PasswordForgetLink = () =>
         <Link to="/pw-forget">Forgot Password?</Link>
     </p>
 
-export default PasswordForgetPage;
+export default PasswordResetPage;
 
 export {
     PasswordForgetForm,

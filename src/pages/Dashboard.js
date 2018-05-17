@@ -4,13 +4,13 @@ import { compose } from 'recompose';
 import {authCondition} from '../components/Helpers';
 import withAuthorization from './withAuthorization';
 
-class HomePage extends React.Component{
+class Dashboard extends React.Component{
 
     render() {
         return (
             <div>
-                <h1>Home</h1>
-                <p>The Home Page is accessible by every signed in user.</p>
+                <h1>Dashboard</h1>
+                <p>The dashboard is accessible by every signed in user.</p>
             </div>
         );
     }
@@ -23,4 +23,4 @@ const mapStateToProps = (state) => ({
 export default compose(
     withAuthorization(authCondition),
     connect(mapStateToProps)
-)(HomePage);
+)(Dashboard);

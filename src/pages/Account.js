@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import {authCondition} from '../components/Helpers';
-import { PasswordForgetForm } from './PasswordForget';
+import { PasswordForgetForm } from './PasswordReset';
 import PasswordChangeForm from './PasswordChange';
 import withAuthorization from './withAuthorization';
 

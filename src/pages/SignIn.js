@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Button from '../components/Button';
 import { SignUpLink } from './SignUp';
-import { PasswordForgetLink } from './PasswordForget';
+import { PasswordForgetLink } from './PasswordReset';
 import { auth } from '../firebase/index';
 import * as routes from '../constants/routes';
 import {updateByPropertyName} from '../components/Helpers';
@@ -43,7 +43,7 @@ class SignInForm extends React.Component {
         auth.logIn(email, password)
             .then(() => {
                 this.setState(() => ({ ...INITIAL_STATE }));
-                history.push(routes.HOME);
+                history.push(routes.DASHBOARD);
             })
             .catch(error => {
                 this.setState(updateByPropertyName('error', error));

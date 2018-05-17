@@ -47,7 +47,7 @@ class SignUpForm extends React.Component {
                 db.createUser(authUser.uid, username, email)
                     .then(() => {
                         this.setState(() => ({ ...INITIAL_STATE }));
-                        history.push(routes.HOME);
+                        history.push(routes.DASHBOARD);
                     })
                     .catch(error => {
                         this.setState(updateByPropertyName('error', error));
