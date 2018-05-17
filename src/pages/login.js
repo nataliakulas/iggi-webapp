@@ -89,6 +89,9 @@ class LogInForm extends React.Component {
           type="password"
           placeholder="Hasło"
         />
+        <ul>
+          <li><Link to={routes.RESET}>Nie pamiętam hasła</Link></li>
+        </ul>
         <div className="card-footer">
           <Button className="button" disabled={isInvalid} type="submit">Zaloguj</Button>
         </div>
