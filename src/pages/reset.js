@@ -11,7 +11,9 @@ const PasswordResetPage = () =>
       <Row>
         <Col lg={6} lgOffset={3}>
           <div className="card">
-            <h1>Zapomniałeś hasła</h1>
+            <div className="card-header">
+              <h2 className="card-title">Nowe hasło</h2>
+            </div>
             <PasswordResetForm/>
           </div>
         </Col>
@@ -54,14 +56,17 @@ class PasswordResetForm extends React.Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form" onSubmit={this.onSubmit}>
         <input
+          className="input"
           value={this.state.email}
           onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
           type="text"
-          placeholder="Email Address"
+          placeholder="Adres e-mail"
         />
-        <Button disabled={isInvalid} type="submit">Resetuj hasło</Button>
+        <div className="card-footer">
+          <Button disabled={isInvalid} type="submit">Resetuj hasło</Button>
+        </div>
         {error && <p>{error.message}</p>}
       </form>
     );

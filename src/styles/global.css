@@ -11,6 +11,10 @@ body {
   outline-color: #1e656d;
   outline-offset: 1px; }
 
+::selection {
+  background-color: #1e656d;
+  color: #fefefe; }
+
 .navigation-wrapper {
   position: absolute; }
 
@@ -83,7 +87,7 @@ body {
   .background.log-in {
     background-image: url("../media/backgrounds/orange-blue.jpg"); }
   .background.password-reset {
-    background-image: url("../media/backgrounds/cookies-pink.jpg"); }
+    background-image: url("../media/backgrounds/donuts-blue.jpg"); }
   .background.dashboard {
     background-image: url("../media/backgrounds/broccoli-green.jpg"); }
   .background.info {
