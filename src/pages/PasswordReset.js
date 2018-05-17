@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from '../components/Button';
+import {updateByPropertyName} from '../components/Helpers';
+import {passwordReset} from '../firebase/auth'
 
 import {auth} from '../firebase';
 
@@ -18,18 +23,14 @@ const PasswordForgetPage = () =>
     </Grid>
   </div>;
 
-const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value,
-});
-
 const INITIAL_STATE = {
   email: '',
   error: null,
 };
 
-class PasswordForgetForm extends Component {
-  constructor(props) {
-    super(props);
+class PasswordResetForm extends React.Component {
+    constructor(props) {
+        super(props);
 
     this.state = {...INITIAL_STATE};
   }
@@ -37,13 +38,13 @@ class PasswordForgetForm extends Component {
   onSubmit = (event) => {
     const {email} = this.state;
 
-    auth.doPasswordReset(email)
-      .then(() => {
-        this.setState(() => ({...INITIAL_STATE}));
-      })
-      .catch(error => {
-        this.setState(byPropKey('error', error));
-      });
+       passwordReset(email)
+            .then(() => {
+                this.setState(() => ({ ...INITIAL_STATE }));
+            })
+            .catch(error => {
+                this.setState(updateByPropertyName('error', error));
+            });
 
     event.preventDefault();
   }
@@ -60,7 +61,7 @@ class PasswordForgetForm extends Component {
       <form onSubmit={this.onSubmit}>
         <input
           value={this.state.email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
+          onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
           type="text"
           placeholder="Email Address"
         />
@@ -74,14 +75,16 @@ class PasswordForgetForm extends Component {
   }
 }
 
-const PasswordForgetLink = () =>
-  <p>
-    <Link to="/pw-forget">Forgot Password?</Link>
-  </p>
+const PasswordResetLink = () =>
+    <p>
+        <Link to="/pw-reset">Forgot Password?</Link>
+    </p>
 
-export default PasswordForgetPage;
+export default PasswordResetPage;
 
 export {
   PasswordForgetForm,
   PasswordForgetLink,
+    PasswordResetForm,
+    PasswordResetLink,
 };

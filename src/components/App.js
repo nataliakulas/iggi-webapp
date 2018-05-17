@@ -16,6 +16,7 @@ import Settings from '../pages/settings';
 import Step1 from '../pages/settings/step-1';
 import Step2 from '../pages/settings/step-2';
 import Info from '../pages/info';
+import ProfilePage from '../pages/profile/create';
 
 const App = () =>
   <Router>
@@ -26,6 +27,8 @@ const App = () =>
       <Route exact path={routes.SIGN_IN} component={() => <SignInPage/>}/>
       <Route exact path={routes.PASSWORD_FORGET} component={() => <PasswordForgetPage/>}/>
       <Route exact path={routes.DASHBOARD} component={() => <HomePage/>}/>
+      <Route exact path={routes.PASSWORD_RESET} component={() => <PasswordResetPage/>}/>
+      <Route exact path={routes.DASHBOARD} component={() => <Dashboard/>}/>
       <Route exact path={routes.ACCOUNT} component={() => <AccountPage/>}/>
       <Route exact path={routes.SETTINGS} component={() => <Settings/>}/>
       <Route exact path={routes.STEP_1} component={() => <Step1/>}/>

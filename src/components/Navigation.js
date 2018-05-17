@@ -1,16 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-import AuthUserContext from './AuthUserContext';
 import * as routes from '../constants/routes';
 import {auth} from '../firebase';
 
-const Navigation = () =>
-  <AuthUserContext.Consumer>
-    {authUser => authUser
-      ? <NavigationUserNonRegister/>
-      : <NavigationUserRegister/>
-    }
-  </AuthUserContext.Consumer>;
+const Navigation = ({ authUser }) =>
+    <div>
+        { authUser
+            ? <NavigationAuth />
+            : <NavigationNonAuth />
+        }
+    </div>
 
 
 const NavigationUserNonRegister = () =>
@@ -31,4 +31,4 @@ const NavigationUserRegister = () =>
     <li className="log-out"><span onClick={() => auth.doSignOut()}>Wyjdź</span></li>
   </ul>;
 
-export default Navigation;
+export default connect(mapStateToProps)(Navigation);

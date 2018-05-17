@@ -5,7 +5,14 @@ import {withRouter} from 'react-router-dom';
 import {SignUpLink} from './SignUp';
 import {PasswordForgetLink} from './PasswordForget';
 import {auth} from '../firebase';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import Button from '../components/Button';
+import { SignUpLink } from './SignUp';
+import { PasswordResetLink } from './PasswordReset';
+import {logIn} from '../firebase/auth';
 import * as routes from '../constants/routes';
+import {updateByPropertyName} from '../components/Helpers';
 
 
 const SignInPage = ({history}) =>
@@ -26,9 +33,6 @@ const SignInPage = ({history}) =>
     </Grid>
   </div>;
 
-const updateByPropertyName = (propertyName, value) => () => ({
-  [propertyName]: value,
-});
 
 const INITIAL_STATE = {
   email: '',
@@ -36,9 +40,9 @@ const INITIAL_STATE = {
   error: null,
 };
 
-class SignInForm extends Component {
-  constructor(props) {
-    super(props);
+class SignInForm extends React.Component {
+    constructor(props) {
+        super(props);
 
     this.state = {...INITIAL_STATE};
   }
@@ -53,14 +57,14 @@ class SignInForm extends Component {
       history,
     } = this.props;
 
-    auth.doSignInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.setState(() => ({...INITIAL_STATE}));
-        history.push(routes.HOME);
-      })
-      .catch(error => {
-        this.setState(updateByPropertyName('error', error));
-      });
+        logIn(email, password)
+            .then(() => {
+                this.setState(() => ({ ...INITIAL_STATE }));
+                history.push(routes.DASHBOARD);
+            })
+            .catch(error => {
+                this.setState(updateByPropertyName('error', error));
+            });
 
     event.preventDefault();
   }

@@ -1,14 +1,16 @@
 import { db } from './firebase';
+import * as firebase from 'firebase';
 
-// User API
+const db = firebase.database();
 
-export const doCreateUser = (id, username, email) =>
+export const getProducts = () =>
+  db.ref(`products`).once('value');
+
+export const createUser = (id, username, email) =>
     db.ref(`users/${id}`).set({
         username,
-        email,
+        email
     });
 
 export const onceGetUsers = () =>
     db.ref('users').once('value');
-
-// Other Entity APIs ...

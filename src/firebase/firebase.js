@@ -33,6 +33,6 @@ const db = firebase.database();
 const auth = firebase.auth();
 
 export {
-    db,
-    auth,
+  auth, db
+
 };

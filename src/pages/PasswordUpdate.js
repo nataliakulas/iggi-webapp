@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {updateByPropertyName} from '../components/Helpers';
+import Button from '../components/Button';
+import {passwordUpdate} from '../firebase/auth'
 
-import { auth } from '../firebase';
-
-const byPropKey = (propertyName, value) => () => ({
-    [propertyName]: value,
-});
 
 const INITIAL_STATE = {
     passwordOne: '',
@@ -12,22 +10,21 @@ const INITIAL_STATE = {
     error: null,
 };
 
-class PasswordChangeForm extends Component {
+class PasswordUpdateForm extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = { ...INITIAL_STATE };
     }
 
     onSubmit = (event) => {
         const { passwordOne } = this.state;
 
-        auth.doPasswordUpdate(passwordOne)
+        passwordUpdate(passwordOne)
             .then(() => {
                 this.setState(() => ({ ...INITIAL_STATE }));
             })
             .catch(error => {
-                this.setState(byPropKey('error', error));
+                this.setState(updateByPropertyName('error', error));
             });
 
         event.preventDefault();
@@ -48,24 +45,25 @@ class PasswordChangeForm extends Component {
             <form onSubmit={this.onSubmit}>
                 <input
                     value={passwordOne}
-                    onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
+                    onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
                     type="password"
                     placeholder="New Password"
                 />
                 <input
                     value={passwordTwo}
-                    onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
+                    onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
                     type="password"
                     placeholder="Confirm New Password"
                 />
-                <button disabled={isInvalid} type="submit">
-                    Reset My Password
-                </button>
+                <Button disabled={isInvalid} type="submit">
+                    Update my password
+                </Button>
 
                 { error && <p>{error.message}</p> }
+
             </form>
         );
     }
 }
 
-export default PasswordChangeForm;
+export default PasswordUpdateForm;

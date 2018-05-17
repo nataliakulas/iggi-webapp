@@ -6,7 +6,12 @@ import {
 } from 'react-router-dom';
 import {auth, db} from '../firebase';
 
+import {db} from '../firebase/index';
+import Button from '../components/Button';
 import * as routes from '../constants/routes';
+import {updateByPropertyName} from '../components/Helpers';
+import {registerUser} from '../firebase/auth';
+
 
 const SignUpPage = ({history}) =>
   <div className="background sign-up">
@@ -24,10 +29,6 @@ const SignUpPage = ({history}) =>
     </Grid>
   </div>;
 
-const updateByPropertyName = (propertyName, value) => () => ({
-  [propertyName]: value,
-});
-
 const INITIAL_STATE = {
   username: '',
   email: '',
@@ -36,9 +37,9 @@ const INITIAL_STATE = {
   error: null,
 };
 
-class SignUpForm extends Component {
-  constructor(props) {
-    super(props);
+class SignUpForm extends React.Component {
+    constructor(props) {
+        super(props);
 
     this.state = {...INITIAL_STATE};
   }
@@ -54,18 +55,17 @@ class SignUpForm extends Component {
       history,
     } = this.props;
 
-    auth.doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
+        registerUser(email, passwordOne)
+            .then(authUser => {
 
-        // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.uid, username, email)
-          .then(() => {
-            this.setState(() => ({...INITIAL_STATE}));
-            history.push(routes.HOME);
-          })
-          .catch(error => {
-            this.setState(updateByPropertyName('error', error));
-          });
+                db.createUser(authUser.uid, username, email)
+                    .then(() => {
+                        this.setState(() => ({ ...INITIAL_STATE }));
+                        history.push(routes.DASHBOARD);
+                    })
+                    .catch(error => {
+                        this.setState(updateByPropertyName('error', error));
+                    });
 
       })
       .catch(error => {
