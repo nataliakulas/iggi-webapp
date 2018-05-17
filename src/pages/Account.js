@@ -2,16 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import {authCondition} from '../components/Helpers';
-import { PasswordForgetForm } from './PasswordReset';
-import PasswordChangeForm from './PasswordChange';
+import PasswordUpdateForm from './PasswordUpdate';
 import withAuthorization from './withAuthorization';
 
 
 const AccountPage = ({ authUser }) =>
     <div>
         <h1>Account: {authUser.email}</h1>
-        <PasswordForgetForm />
-        <PasswordChangeForm />
+        <PasswordUpdateForm />
     </div>
 
 const mapStateToProps = (state) => ({

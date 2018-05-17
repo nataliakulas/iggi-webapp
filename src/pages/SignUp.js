@@ -2,10 +2,11 @@ import React from 'react';
 import {Link,
 withRouter,
 } from 'react-router-dom';
-import { auth, db } from '../firebase/index';
+import {db} from '../firebase/index';
 import Button from '../components/Button';
 import * as routes from '../constants/routes';
 import {updateByPropertyName} from '../components/Helpers';
+import {registerUser} from '../firebase/auth';
 
 
 
@@ -41,7 +42,7 @@ class SignUpForm extends React.Component {
             history,
         } = this.props;
 
-        auth.registerUser(email, passwordOne)
+        registerUser(email, passwordOne)
             .then(authUser => {
 
                 db.createUser(authUser.uid, username, email)

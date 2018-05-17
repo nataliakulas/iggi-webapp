@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
-import { auth } from '../firebase/index';
 import {updateByPropertyName} from '../components/Helpers';
+import {passwordReset} from '../firebase/auth'
 
 const PasswordResetPage = () =>
     <div>
         <h1>Password Forget</h1>
-        <PasswordForgetForm />
+        <PasswordResetForm />
     </div>
 
 const INITIAL_STATE = {
@@ -15,7 +15,7 @@ const INITIAL_STATE = {
     error: null,
 };
 
-class PasswordForgetForm extends React.Component {
+class PasswordResetForm extends React.Component {
     constructor(props) {
         super(props);
 
@@ -25,7 +25,7 @@ class PasswordForgetForm extends React.Component {
     onSubmit = (event) => {
         const { email } = this.state;
 
-       auth.passwordReset(email)
+       passwordReset(email)
             .then(() => {
                 this.setState(() => ({ ...INITIAL_STATE }));
             })
@@ -62,14 +62,14 @@ class PasswordForgetForm extends React.Component {
     }
 }
 
-const PasswordForgetLink = () =>
+const PasswordResetLink = () =>
     <p>
-        <Link to="/pw-forget">Forgot Password?</Link>
+        <Link to="/pw-reset">Forgot Password?</Link>
     </p>
 
 export default PasswordResetPage;
 
 export {
-    PasswordForgetForm,
-    PasswordForgetLink,
+    PasswordResetForm,
+    PasswordResetLink,
 };

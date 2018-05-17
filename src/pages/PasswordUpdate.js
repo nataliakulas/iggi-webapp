@@ -1,7 +1,7 @@
 import React from 'react';
-import { auth } from '../firebase/index';
 import {updateByPropertyName} from '../components/Helpers';
 import Button from '../components/Button';
+import {passwordUpdate} from '../firebase/auth'
 
 
 const INITIAL_STATE = {
@@ -10,7 +10,7 @@ const INITIAL_STATE = {
     error: null,
 };
 
-class PasswordChangeForm extends React.Component {
+class PasswordUpdateForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = { ...INITIAL_STATE };
@@ -19,7 +19,7 @@ class PasswordChangeForm extends React.Component {
     onSubmit = (event) => {
         const { passwordOne } = this.state;
 
-        auth.passwordUpdate(passwordOne)
+        passwordUpdate(passwordOne)
             .then(() => {
                 this.setState(() => ({ ...INITIAL_STATE }));
             })
@@ -56,13 +56,14 @@ class PasswordChangeForm extends React.Component {
                     placeholder="Confirm New Password"
                 />
                 <Button disabled={isInvalid} type="submit">
-                    Reset My Password
+                    Update my password
                 </Button>
 
                 { error && <p>{error.message}</p> }
+
             </form>
         );
     }
 }
 
-export default PasswordChangeForm;
+export default PasswordUpdateForm;

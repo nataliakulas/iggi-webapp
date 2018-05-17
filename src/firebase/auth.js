@@ -1,4 +1,4 @@
-import {auth} from './firebase';
+import auth from './config';
 
 // Sign Up
 export const registerUser =
@@ -16,7 +16,7 @@ export const passwordReset = (email) =>
 export const signOut = () =>
     auth.signOut();
 
-// Password Change
+// Password Update
 export const passwordUpdate = (password) =>
     auth.currentUser.updatePassword(password);
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Button from '../components/Button';
 import { SignUpLink } from './SignUp';
-import { PasswordForgetLink } from './PasswordReset';
-import { auth } from '../firebase/index';
+import { PasswordResetLink } from './PasswordReset';
+import {logIn} from '../firebase/auth';
 import * as routes from '../constants/routes';
 import {updateByPropertyName} from '../components/Helpers';
 
@@ -12,7 +12,7 @@ const SignInPage = ({ history }) =>
     <div>
         <h1>Sign in</h1>
         <SignInForm history={history} />
-        <PasswordForgetLink />
+        <PasswordResetLink />
         <SignUpLink />
     </div>
 
@@ -40,7 +40,7 @@ class SignInForm extends React.Component {
             history,
         } = this.props;
 
-        auth.logIn(email, password)
+        logIn(email, password)
             .then(() => {
                 this.setState(() => ({ ...INITIAL_STATE }));
                 history.push(routes.DASHBOARD);
