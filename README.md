@@ -7,5 +7,5 @@ Author: Natalia Kulas
 Collaborator: Magdalena Dering
 
 Credits:
-  Photos made by Alexey Sokolov from icons8.com
-  Icon made by Smashicons from www.flaticon.com 
+  Photos made by Alexey Sokolov from https://icons8.com;
+  Icons made by Smashicons from www.flaticon.com 
