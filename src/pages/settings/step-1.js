@@ -31,6 +31,10 @@ class Step1 extends React.Component {
     this.props.onGetProducts();
   }
 
+  componentWillUnmount() {
+    this.props.onGetProducts(null)
+  }
+
   saveUserGroups = () => {
     let userGroups = Object.keys(this.props.userGroups.values);
     console.log(userGroups)

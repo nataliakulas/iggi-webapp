@@ -119,6 +119,15 @@ body {
       text-transform: lowercase; }
   .card .card-body {
     margin-top: 50px; }
+    .card .card-body.center {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .card .card-body table thead {
+      text-transform: uppercase; }
+    .card .card-body table td, .card .card-body table th {
+      border: 1px solid #5bc8ac;
+      padding: 5px; }
   .card .card-header,
   .card .card-footer {
     width: 100%;

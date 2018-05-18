@@ -33,6 +33,10 @@ class Step2 extends React.Component {
     this.props.onGetProducts();
   }
 
+  componentWillUnmount() {
+    this.props.onGetProducts(null)
+  }
+
   saveUserProducts = () => {
     let userProducts = Object.keys(this.props.userProducts.values);
     console.log(userProducts)

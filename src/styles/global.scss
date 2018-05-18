@@ -198,6 +198,23 @@ body {
 
   .card-body {
     margin-top: 50px;
+
+    &.center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    table {
+      thead {
+        text-transform: uppercase;
+      }
+
+      td, th {
+        border: 1px solid $turquoise;
+        padding: 5px;
+      }
+    }
   }
 
   .card-header,
