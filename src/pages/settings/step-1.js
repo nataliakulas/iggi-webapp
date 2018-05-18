@@ -1,7 +1,10 @@
 import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
+import {withRouter} from 'react-router-dom';
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
+
+import * as routes from '../../shared/routes';
 
 import {getProductsThunk} from '../../state/actions';
 
@@ -38,6 +41,7 @@ class Step1 extends React.Component {
   saveUserGroups = () => {
     let userGroups = Object.keys(this.props.userGroups.values);
     console.log(userGroups)
+    this.props.history.push(routes.STEP_2)
   };
 
   render() {
@@ -80,5 +84,6 @@ class Step1 extends React.Component {
 
 export default compose(
   connect(null, mapDispatchToProps),
-  connect(mapStateToProps)
+  connect(mapStateToProps),
+  withRouter
 )(Step1)

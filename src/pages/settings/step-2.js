@@ -1,7 +1,10 @@
 import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
+import {withRouter} from 'react-router-dom';
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
+
+import * as routes from '../../shared/routes';
 
 import {setActiveMenuItem, getProductsThunk} from '../../state/actions';
 
@@ -95,5 +98,6 @@ class Step2 extends React.Component {
 
 export default compose(
   connect(null, mapDispatchToProps),
-  connect(mapStateToProps)
+  connect(mapStateToProps),
+  withRouter
 )(Step2)

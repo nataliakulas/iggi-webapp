@@ -51,7 +51,10 @@ class PasswordUpdateForm extends React.Component {
       passwordOne === '';
 
     return (
-      <form className="form" onSubmit={this.onSubmit}>
+      <form className="form" onSubmit={this.onSubmit} style={{justifyContent: 'flex-start'}}>
+        <ul>
+          <li><Link to={routes.STEP_1}>Personalizuj dane produktów</Link></li>
+        </ul>
         <input
           className="input"
           value={passwordOne}
@@ -66,9 +69,6 @@ class PasswordUpdateForm extends React.Component {
           type="password"
           placeholder="Powtórz nowe hasło"
         />
-        <ul>
-          <li><Link to={routes.STEP_1}>Personalizuj dane produktów</Link></li>
-        </ul>
         <div className="card-footer">
           <Button disabled={isInvalid} type="submit">Aktualizuj</Button>
         </div>
