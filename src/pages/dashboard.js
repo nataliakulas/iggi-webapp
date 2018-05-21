@@ -40,7 +40,7 @@ class Dashboard extends React.Component {
                   <table>
                     <thead>
                     <tr>
-                      <th style={{width: 150}}>Name</th>
+                      <th style={{width: 150}}>Nazwa</th>
                       <th style={{width: 45}}>IG</th>
                     </tr>
                     </thead>

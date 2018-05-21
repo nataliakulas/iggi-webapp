@@ -28,6 +28,18 @@ body {
   color: $white
 }
 
+.separator {
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid rgba(0, 41, 60, 0.15);
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+ul li {
+  list-style-type: none;
+}
+
 .navigation-wrapper {
   position: absolute;
 }
