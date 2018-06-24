@@ -7,4 +7,5 @@ export const SETTINGS = '/ustawienia';
 export const STEP_1 = '/ustawienia/krok-1';
 export const STEP_2 = '/ustawienia/krok-2';
 export const INFO = '/informacje';
+export const PAGE404 = '/*';
 
